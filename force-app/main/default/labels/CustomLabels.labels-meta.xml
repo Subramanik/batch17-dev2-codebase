@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Description</fullName>
+        <categories>Opportunity</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Description</shortDescription>
+        <value>New Customer, Work with them to close the deal</value>
+    </labels>
+</CustomLabels>
