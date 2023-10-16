@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Subramani Kumarasamy
  * @group             : 
- * @last modified on  : 10-12-2023
+ * @last modified on  : 10-16-2023
  * @last modified by  : Subramani Kumarasamy
 **/
 
@@ -46,6 +46,147 @@ public class RestCallout {
         //4. Process the response
         System.debug('Status code: '+response.getStatusCode());
         System.debug('Body: '+ response.getBody());
+    }
+    
+    //EndPoint: https://api.instantwebtools.net/v1/airlines/2
+    //Method: GET
+    public static void getAirline(){
+
+        //1. Prepare the HttpRequest
+        HttpRequest request = new HttpRequest();
+        //1.a. Set the endpoint
+        //request.setEndpoint('https://api.instantwebtools.net/v1/airlines/3');
+        //1.b. Set Method
+        request.setMethod('GET');
+        //1.c. Set Header
+
+        //1. Bearer Token
+        //request.setHeader('Authorization', 'Bearer 12344234232312');
+
+        //2. Using Named Credentials with Username and password:
+        
+        request.setEndpoint('callout:Airline/5');
+
+        //1.d. Set Body - Not Required
+        //2. Prepare the Internet http
+        Http http = new Http();
+        //3. Send the request
+        HttpResponse response = http.send(request);
+        //4. Process the response
+        
+        if(response.getStatusCode() == 200){
+            //Convert the JSON Response into SF Data
+            String jsonResponse = response.getBody();
+            AirlineWrapper airline = (AirlineWrapper) JSON.deserialize(jsonResponse, AirlineWrapper.class);
+            System.debug('Airline : '+airline);
+
+            // Create Airline Record
+            Airline__c airlineRecord = new Airline__c();
+            airlineRecord.Name= String.valueOf(airline.id);
+            airlineRecord.Country__c = airline.country;
+            airlineRecord.Established__c = airline.established;
+            airlineRecord.Head_Quarters__c = airline.head_quaters;
+            airlineRecord.Logo_URL__c = airline.logo;
+            airlineRecord.Name__c = airline.name;
+            airlineRecord.Slogan__c = airline.slogan;
+            airlineRecord.Website__c = airline.website;
+
+            try{
+                insert airlineRecord;   
+            }catch(Exception ex){
+                System.debug('Exception : '+ex.getMessage());
+            }
+        }else{
+            System.debug('Status code : '+response.getStatusCode());
+            System.debug('Response Body : '+response.getBody());
+        }
+    }
+
+    //EndPoint: https://api.restful-api.dev/objects
+    //Method: GET
+    public static void getObjects(){
+
+        //1. Prepare the HttpRequest
+        HttpRequest request = new HttpRequest();
+        //1.a. Set the Endpoint
+        request.setEndpoint('callout:Object');
+        //1.b. Set the Method
+        request.setMethod('GET');
+        //1.c. Set the Headers - Not Required
+        //1.d. Set the Body - Not Required
+        //2. Prepare the Internet http
+        Http http = new Http();
+        //3. Send the Request.
+        HttpResponse response = http.send(request);
+        //4. Process the Response
+        System.debug('Status Code : '+response.getStatusCode());
+        System.debug('Response Body : '+ response.getBody());
+    }
+
+    //EndPoint : https://api.restful-api.dev/objects
+    // Method : POST
+    public static void postObject(){
+
+        //1. Prepare the HttpRequest
+        HttpRequest request = new HttpRequest();
+        //1.a. Set the EndPoint
+        request.setEndpoint('callout:Object');
+        //1.b. Set the Method
+        request.setMethod('POST');
+        //1.c Set the Headers
+        request.setHeader('Content-Type', 'application/json');
+        
+        //1.d. Set the Body
+
+        // i. Prepare the Body
+        ObjectRequest objReq = new ObjectRequest();
+        objReq.name = 'Macbook Pro 16';
+
+        ObjectRequest.DataWrapper dataWrapper = new ObjectRequest.DataWrapper();
+        dataWrapper.year = 2023;
+        dataWrapper.price= 1600.00;
+        dataWrapper.CPU_model= 'M2 Chip';
+        dataWrapper.Hard_disk_size = '1 TB SSD';
+
+        objReq.data =dataWrapper;
+
+        String jsonBody = JSON.serialize(objReq);
+        jsonBody = jsonBody.replaceAll('"Hard_disk_size"', '"Hard disk size"');
+        jsonBody = jsonBody.replaceAll('"CPU_model"', '"CPU model"');
+        System.debug(jsonBody);
+
+        request.setBody(jsonBody);
+
+        //2. Prepare the Internet http
+
+        Http http = new Http();
+
+        // 3. Send the Request
+        HttpResponse response = http.send(request);
+
+        //4. Process the Response
+        System.debug('Status Code : '+response.getStatusCode());
+        System.debug('Status : '+response.getStatus());
+        System.debug('Response Body : '+response.getBody());
+
+        if(response.getStatusCode() == 200){
+            // Convert JSON into SF Data
+            String jsonResponse = response.getBody();
+            jsonResponse = jsonResponse.replaceAll('"Hard disk size"','"Hard_disk_size"');
+            jsonResponse = jsonResponse.replaceAll('"CPU model"', '"CPU_model"');
+            System.debug('Response : '+jsonResponse);
+            ObjectResponse objResponse = (ObjectResponse) JSON.deserialize(jsonResponse, ObjectResponse.class);
+
+            System.debug('Name : '+objResponse.name);
+            System.debug('Id : '+objResponse.id);
+            System.debug('createdAt : '+objResponse.createdAt);
+            System.debug('CPU Model : '+objResponse.data.CPU_model);
+            System.debug('Hard Disk size : '+objResponse.data.Hard_disk_size);
+            System.debug('Price : '+objResponse.data.price);
+            System.debug('Year : '+objResponse.data.year);
+
+        }
+
     }
     
 }
