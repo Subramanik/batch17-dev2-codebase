@@ -2,7 +2,7 @@
  * @description       : 
  * @author            : Subramani Kumarasamy
  * @group             : 
- * @last modified on  : 10-16-2023
+ * @last modified on  : 10-19-2023
  * @last modified by  : Subramani Kumarasamy
 **/
 
@@ -29,7 +29,7 @@ public class RestCallout {
 
     //EndPoint: https://th-apex-http-callout.herokuapp.com/animals
     //Method: GET
-    public static void getAnimal(){
+    public static HttpResponse getAnimal(){
 
         //1. Prepare the HttpRequest
         HttpRequest request = new HttpRequest();
@@ -46,11 +46,12 @@ public class RestCallout {
         //4. Process the response
         System.debug('Status code: '+response.getStatusCode());
         System.debug('Body: '+ response.getBody());
+        return response;
     }
     
     //EndPoint: https://api.instantwebtools.net/v1/airlines/2
     //Method: GET
-    public static void getAirline(){
+    public static HttpResponse getAirline(){
 
         //1. Prepare the HttpRequest
         HttpRequest request = new HttpRequest();
@@ -77,6 +78,7 @@ public class RestCallout {
         if(response.getStatusCode() == 200){
             //Convert the JSON Response into SF Data
             String jsonResponse = response.getBody();
+            System.debug('Response : '+jsonResponse);
             AirlineWrapper airline = (AirlineWrapper) JSON.deserialize(jsonResponse, AirlineWrapper.class);
             System.debug('Airline : '+airline);
 
@@ -100,11 +102,12 @@ public class RestCallout {
             System.debug('Status code : '+response.getStatusCode());
             System.debug('Response Body : '+response.getBody());
         }
+        return response;
     }
 
     //EndPoint: https://api.restful-api.dev/objects
     //Method: GET
-    public static void getObjects(){
+    public static HttpResponse getObjects(){
 
         //1. Prepare the HttpRequest
         HttpRequest request = new HttpRequest();
@@ -121,11 +124,12 @@ public class RestCallout {
         //4. Process the Response
         System.debug('Status Code : '+response.getStatusCode());
         System.debug('Response Body : '+ response.getBody());
+        return response;
     }
 
     //EndPoint : https://api.restful-api.dev/objects
     // Method : POST
-    public static void postObject(){
+    public static HttpResponse postObject(){
 
         //1. Prepare the HttpRequest
         HttpRequest request = new HttpRequest();
@@ -186,7 +190,87 @@ public class RestCallout {
             System.debug('Year : '+objResponse.data.year);
 
         }
+        return response;
+    }
 
+    //EndPoint: https://api.instantwebtools.net/v1/airlines
+    //Method: POST
+    @future(callout=true)
+    public static void postAirline(ID airlineId){
+
+        //1. prepare the HttpRequest
+        HttpRequest request = new HttpRequest();
+        //1.a. Set the EndPoint
+        request.setEndpoint('callout:Airline');
+        //1.b. Set the Method
+        request.setMethod('POST');
+        //1.c Set the Headers
+        //i. Set the Content-Type
+        request.setHeader('Content-Type', 'application/json');
+        //1.d. Set the Body
+        //i. prepare the Body
+            // Query the Airline Record and prepare the JSON Body
+        Airline__c airlineRecord = [SELECT ID, Name, Callout_Status__c, Country__c, Established__c, Head_Quarters__c, Logo_URL__c, Name__c, Slogan__c, Website__c FROM Airline__c WHERE ID =: airlineId];
+
+        // Map the Airline Record into Airline Wrapper
+        AirlineWrapper airlineWrapper = new AirlineWrapper();
+        airlineWrapper.id = Integer.valueOf(airlineRecord.Name);
+        airlineWrapper.country = airlineRecord.Country__c;
+        airlineWrapper.established = airlineRecord.Established__c;
+        airlineWrapper.logo = airlineRecord.Logo_URL__c;
+        airlineWrapper.name = airlineRecord.Name__c;
+        airlineWrapper.head_quaters = airlineRecord.Head_Quarters__c;
+        airlineWrapper.website = airlineRecord.Website__c;
+        airlineWrapper.slogan = airlineRecord.Slogan__c;
+
+        // Convert the Airline Wrapper into JSON
+        String jsonBody = JSON.serialize(airlineWrapper);
+        System.debug('JSON Body : '+jsonBody);
+
+        // Set the Body
+        request.setBody(jsonBody);
+
+        //2. Prepare the Internet http
+        Http http = new Http();
+
+        //3. Send the Request
+        HttpResponse reponse = http.send(request);
+
+        //4. Process the Response
+        System.debug('Status Code : '+reponse.getStatusCode());
+        // Do the business logic based on the response
+        if(reponse.getStatusCode() == 200){
+            System.debug('Callout is successfull');
+            System.debug('Response Body : '+reponse.getBody());
+            // Update Airline Record Callout Status as Callout Success
+            airlineRecord.Callout_Status__c = 'Callout Success';
+        }else{
+            System.debug('Callout is Failed');
+            System.debug('Response Body : '+reponse.getBody());
+            // Update Airline Record Callout Status as Callout Failed
+            airlineRecord.Callout_Status__c = 'Callout Failed';
+        }
+        update airlineRecord;
+    }
+    
+    //EndPoint:https://api.restful-api.dev/objects/ID
+    //Method: DELETE
+    public static HttpResponse deleteObject(String id){
+        
+        //1. Prepare the HttpRequest
+        HttpRequest request = new HttpRequest();
+        //1.a. set EndPoint
+        request.setEndpoint('callout:Object/'+id);
+        //1.b. Set Method
+        request.setMethod('DELETE');
+        //2. Prepare the Internet http
+        Http http = new Http();
+        //3. Send the Request
+        HttpResponse response = http.send(request);
+        //4. Process the Response
+        System.debug('Status Code : '+ response.getStatusCode());
+        System.debug('Response Body : '+ response.getBody());
+        return response;
     }
     
 }
