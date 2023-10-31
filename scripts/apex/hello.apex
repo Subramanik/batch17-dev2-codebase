@@ -7,4 +7,17 @@
 
 string tempvar = 'Enter_your_name_here';
 System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+System.debug('My Org Base URL is ' + System.Url.getSalesforceBaseUrl().toExternalForm());
+System.debug('My Org Base URL is ' + URL.getOrgDomainURL().toExternalForm());
+
+/**
+ STEPS TO WRITE APEX REST WEBSERVICE CLASS:
+    1. Create an apex class and annotate it with @RestResource(urlMapping='/MyRestService/*')
+    2. Create a method and annotate it with @HttpGet or @HttpPost or @HttpPut or @HttpDelete or @HttpPatch based on your requirement.
+    3. Get the Request/ Process the Request
+        a. RestRequest Object.
+        b. Parameters
+        c. Wrapper Class (Advanced Pro)
+    4. Process the Business Logic as per the requirement.
+    5. Return the Response.
+ */
