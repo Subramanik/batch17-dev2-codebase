@@ -1,0 +1,31 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-09-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="LDS - Record View Form" icon-name="custom:custom31">
+        <div class="slds-var-m-around_medium">
+            <lightning-record-view-form
+                object-api-name={objectApiName}
+                record-id={recordId}>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name={fields.name}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.type}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.price}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.manualTransmission}> </lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <lightning-output-field field-name={fields.exteriorColor}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.discount}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.afterDiscount}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.owner}> </lightning-output-field>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </div>
+    </lightning-card>
+</template>

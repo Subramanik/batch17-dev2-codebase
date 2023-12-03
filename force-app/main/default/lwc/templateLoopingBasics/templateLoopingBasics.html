@@ -1,0 +1,16 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-06-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Template Looping - Basics">
+        <div class="slds-var-m-around_medium">
+            <template for:each={siblings} for:item="sibling" for:index="index">
+                <div key={sibling}>{index} - {sibling}</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

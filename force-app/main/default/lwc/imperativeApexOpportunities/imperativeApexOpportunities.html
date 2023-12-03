@@ -1,0 +1,35 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-22-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Imperative Apex - Opportunity" icon-name="standard:opportunity">
+        <div class="slds-var-m-around_medium">
+            <!--Use Case: Build an UI that should display the opportunity stage picklist values, upon selecting the stage, bring all the opportunities matching the selected stage and display them in a row of records like a standard list view. -->
+        
+            <!-- Prepare Opportunity stagename picklist component -->
+            <lightning-combobox
+                label="Select the Opportunity Stage"
+                placeholder="Select any stage"
+                options={opptyStageOptions}
+                onchange={handleChange} >
+            </lightning-combobox>
+            <div class="slds-var-m-top_small">
+                <template lwc:if={data}>
+                    <lightning-datatable
+                    key-field="Id"
+                    data={data}
+                    columns={columns}>
+                </lightning-datatable>
+                </template>
+                <template lwc:elseif={error}>
+                    Error: {error}
+                </template>
+            </div>
+        </div> 
+    </lightning-card>
+</template>

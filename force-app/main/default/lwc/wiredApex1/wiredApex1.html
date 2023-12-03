@@ -1,0 +1,26 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-21-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Wired Apex - Opportunities" icon-name="utility:opportunity">
+        <div class="slds-var-m-around_medium">
+            <!-- Use Case: Get the recently created 5 opportunities and display them on the UI with Opportunity Name, Stage Name, Closed Date and Amount and it should look similar to the List View-->
+            <!-- Display this list only when you have data, otherwise display the error message -->
+            <template lwc:if={opps}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={opps}
+                    columns={columns}>
+            </lightning-datatable>
+            </template>
+            <template lwc:else>
+                Error : {error}
+            </template>
+        </div>
+    </lightning-card>
+</template>

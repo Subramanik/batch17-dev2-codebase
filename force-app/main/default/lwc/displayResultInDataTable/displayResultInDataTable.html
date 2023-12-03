@@ -1,0 +1,20 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <div class="slds-var-m-top_small">
+        <template lwc:if={result}>
+            <!-- Display the information on the datatable -->
+            <lightning-datatable
+                key-field="Id"
+                data={result}
+                columns={columns}>
+            </lightning-datatable>
+        </template>
+        <template lwc:if={error}>
+            <!-- Dislay the error in red colour -->
+            <strong>Error: </strong> <br/> 
+            <div class="slds-text-color_error">
+                {error}
+            </div>
+        </template>
+    </div>
+</template>

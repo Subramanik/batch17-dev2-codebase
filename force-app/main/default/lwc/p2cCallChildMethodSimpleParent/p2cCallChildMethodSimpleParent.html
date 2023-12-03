@@ -1,0 +1,41 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-30-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="P2C - Call ChildMethod Simple" icon-name="standard:no_code_model">
+        <div class="slds-var-m-around_medium">
+            <p> Use Case: Allow user to enter their name and age, upon clicking on the button, call the child method at the child component and pass the user entered data from the parent component and get it displayed on the child component</p>
+
+            <lightning-input 
+                type="text" 
+                label="Enter your Name"
+                name="name"
+                onchange={changeHandler}>
+            </lightning-input>
+            <lightning-input 
+                type="number"
+                name="age"
+                label="Enter your Age"
+                onchange={changeHandler}>
+            </lightning-input>
+
+            <div class="slds-var-m-top_small slds-align_absolute-center">
+                <lightning-button 
+                    variant="success" 
+                    label="Call Child Method" 
+                    onclick={callChildMethod}>
+                </lightning-button>
+            </div>
+
+            <div class="slds-var-m-top_medium">
+                <!-- Embed Child Component -->
+            <c-p2c-call-child-method-simple-child></c-p2c-call-child-method-simple-child>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

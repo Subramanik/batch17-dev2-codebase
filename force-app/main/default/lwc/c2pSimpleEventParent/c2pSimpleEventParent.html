@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 12-01-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="C2P - Simple Event" icon-name="standard:no_code_model">
+        <div class="slds-var-m-around_medium">
+            <p>Use Case : Create two buttons on the Child component, one is to increment the value and another button to decrement the value on the parent component. The default value should be 0.</p>
+        </div>
+        <div class="slds-align_absolute-center">
+            Count : <lightning-formatted-number value={counter}></lightning-formatted-number>
+        </div>
+        <!-- Child Component -->
+        <c-c2p-simple-event-child
+            onadd={handleAdd}
+            onsubtract={handleSubtract}
+        ></c-c2p-simple-event-child>
+    </lightning-card>
+   
+</template>

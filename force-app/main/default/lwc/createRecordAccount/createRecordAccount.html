@@ -1,0 +1,62 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-17-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="CreateRecord - Account" icon-name="standard:account">
+        <div class="slds-var-m-around_medium">
+            <form class="accountForm" lwc:ref="accForm">
+                <!-- Build an UI to collect input from User to create an Account Record -->
+                <!-- Account Name -->
+                <lightning-input
+                    type="text" 
+                    label="Account Name"
+                    name="Name"
+                    onchange={changeHandler}>
+                </lightning-input>
+                <!-- Industry -->
+                <lightning-combobox
+                    name="Industry"
+                    label="Industry"
+                    placeholder="Select Industry"
+                    options={industryOptions}
+                    onchange={changeHandler}
+                    lwc:ref="combobox">
+                </lightning-combobox>
+                <!-- Annual Revenue -->
+                <lightning-input 
+                    type="number" 
+                    name="AnnualRevenue" 
+                    label="Annual Revenue" 
+                    formatter="currency"
+                    onchange={changeHandler}>
+                </lightning-input>
+                <!-- Website -->
+                <lightning-input 
+                    type="url" 
+                    label="Website" 
+                    name="Website" 
+                    placeholder="Enter valid URL here..."
+                    onchange={changeHandler}>
+                </lightning-input>
+            </form>
+            <!-- Cancel and Save buttons -->
+            <div class="slds-var-m-top_medium slds-align_absolute-center">
+                <lightning-button 
+                    label="Reset"
+                    variant="neutral"
+                    onclick={resetHandler}>
+                </lightning-button>
+                <lightning-button 
+                    label="Create"
+                    variant="brand"
+                    onclick={saveHandler}
+                    class="slds-var-m-left_small">
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

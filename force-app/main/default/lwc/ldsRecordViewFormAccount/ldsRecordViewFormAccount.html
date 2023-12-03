@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-09-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="LDS - Record View Form - Account" icon-name="standard:account_info">
+        <div class="slds-var-m-around_medium">
+            <lightning-record-view-form
+                object-api-name={objectApiName}
+                record-id={recordId}>
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                        <lightning-output-field field-name={fields.name}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.phone}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.annualRevenue}> </lightning-output-field>
+                    </div>
+                    <div class="slds-col">
+                        <lightning-output-field field-name={fields.type}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.industry}> </lightning-output-field>
+                        <lightning-output-field field-name={fields.accountNumber}> </lightning-output-field>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+        </div>
+    </lightning-card>
+</template>

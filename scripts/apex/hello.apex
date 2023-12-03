@@ -1,3 +1,10 @@
+/**
+ * @description       : 
+ * @author            : Subramani Kumarasamy
+ * @group             : 
+ * @last modified on  : 11-07-2023
+ * @last modified by  : Subramani Kumarasamy
+**/
 // Use .apex files to store anonymous Apex.
 // You can execute anonymous Apex in VS Code by selecting the
 //     apex text and running the command:
@@ -21,3 +28,15 @@ System.debug('My Org Base URL is ' + URL.getOrgDomainURL().toExternalForm());
     4. Process the Business Logic as per the requirement.
     5. Return the Response.
  */
+
+Boolean isLeapYear = true;
+ 
+//Using Ternary Operator
+String msg = isLeapYear ? 'It is a leap year.' : 'It is not a leap year.';
+System.debug('Message - ' + msg);
+if(isLeapYear){
+    System.debug('It is a leap year.');
+}
+else{
+    System.debug('It is not a leap year.');
+}

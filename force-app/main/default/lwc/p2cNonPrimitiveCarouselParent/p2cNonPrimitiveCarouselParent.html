@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-27-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="P2C - Non-Primitive Carousel" icon-name="standard:no_code_model">
+        <div class="slds-var-m-around_medium">
+            <p> Use Case: Prepare and pass the array of carousel object information from Parent Component to the Child Component and display the carousel card on the  Child Component</p>
+
+            <!-- Embed the child component and pass the carousel info -->
+            <c-p2c-non-primitive-carousel-child
+                carousel-details={carouselInfo}>
+            </c-p2c-non-primitive-carousel-child>
+        </div>
+    </lightning-card>
+</template>

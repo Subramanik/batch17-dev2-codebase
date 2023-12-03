@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 12-01-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Child Component - User Input" icon-name="utility:type">
+        <div class="slds-var-m-around_medium">
+            <!-- Input component to get Name -->
+            <lightning-input 
+                type="text" 
+                label="Enter your Name"
+                name="name"
+                onchange={changeHandler}>
+            </lightning-input>
+            <!-- Input component to get Age -->
+            <lightning-input 
+                type="number"
+                name="age"
+                label="Enter your Age"
+                onchange={changeHandler}>
+            </lightning-input>
+        </div>
+    </lightning-card>
+</template>

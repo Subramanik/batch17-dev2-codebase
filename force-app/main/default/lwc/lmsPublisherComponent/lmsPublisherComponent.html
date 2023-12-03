@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 12-03-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="LMS - Publisher" icon-name="standard:datashares">
+        <div class="slds-var-m-around_medium">
+            <p> Use Case: Allow user to enter the data and publish the information to the Lightning Message Channel upon clicking on the Publish button. </p>
+
+            <!-- Create an Input field and button -->
+            <lightning-input 
+                type="text" 
+                label="Enter the data to publish"
+                onchange={changeHandler}>
+            </lightning-input>
+            <lightning-button 
+                variant="brand" 
+                label="Publish" 
+                onclick={handleClick} class="slds-align_absolute-center slds-var-m-top_small">
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,46 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-30-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="P2C - Progress Bar" icon-name="standard:sales_cadence">
+        <div class="slds-var-m-around_medium">
+            <p> Use Case: Allow user to input progress bar value and progress bar size(small, medium.large), immediately progress bar on the child child component needs to be updated according to the user entered details. Additionally, you should be able to reset the progress bar, progress to be 50 from the parent component using a button </p>
+
+            <lightning-input 
+                type="number" 
+                name="barValue" 
+                label="Enter the Progress Bar Value"
+                max="100"
+                onchange={changeHandler}>
+            </lightning-input>
+
+            <lightning-combobox
+                name="barSize"
+                label="Select the Progress Bar Size"
+                placeholder="Select Progress Bar Size"
+                options={sizeOptions}
+                onchange={changeHandler}>
+            </lightning-combobox>
+
+            <div class="slds-var-m-top_medium">
+                <!-- Child Component with progress bar goes here -->
+                <c-p2c-progress-bar-child
+                    bar-value-from-parent={userEnteredValue}
+                    bar-size-from-parent={userSelectedOption}>
+                </c-p2c-progress-bar-child>
+            </div>
+            
+            <div class="slds-var-m-top_medium slds-align_absolute-center">
+                <lightning-button 
+                    variant="brand" 
+                    label="Reset" 
+                    onclick={resetHandler}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

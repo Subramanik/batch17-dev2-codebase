@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-24-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <strong> Child Dynamic Component : </strong>
+
+    <h1> Actor Name: </h1> 
+    <lightning-formatted-text value={name} ></lightning-formatted-text> <br/>
+
+    <h1> Actor Title: </h1>
+    <lightning-formatted-text value={title} ></lightning-formatted-text> <br/>
+
+    <h1> Actor Location: </h1>
+    <lightning-formatted-text value={location}></lightning-formatted-text> <br/>
+
+    <h1> Actor Salary: </h1>
+    <lightning-formatted-number value={salary} format-style="currency" currency-code="EUR"></lightning-formatted-number>
+
+</template>

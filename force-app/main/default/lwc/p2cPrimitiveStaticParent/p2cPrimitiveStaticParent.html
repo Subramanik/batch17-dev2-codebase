@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-24-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="P2C - Static Data" icon-name="standard:no_code_model">
+        <div class="slds-var-m-around_medium">
+            <p> This is the parent component and it sends primitive data to the Child Component</p>
+
+            <c-p2c-primitive-static-child
+                actor-name ={name}
+                actor-title ={title}
+                actor-location ={location}
+                actor-salary ={salary}
+            ></c-p2c-primitive-static-child>
+        </div>
+    </lightning-card>
+</template>

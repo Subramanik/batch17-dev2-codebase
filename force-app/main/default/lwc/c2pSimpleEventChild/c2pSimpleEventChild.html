@@ -1,0 +1,30 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 12-01-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Child Component - Controllers" icon-name="custom:custom63">
+        <div class="slds-align_absolute-center">
+
+            <!-- Buttons -->
+            <lightning-button 
+                variant="brand" 
+                label="Add"
+                icon-name="utility:add"
+                icon-position="right"
+                onclick={addMethod}>
+            </lightning-button>
+            <lightning-button 
+                variant="destructive" 
+                label="Subtract"
+                icon-name="utility:dash"
+                onclick={subtractMethod}
+                icon-position="right" 
+                class="slds-var-m-left_x-small">
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>

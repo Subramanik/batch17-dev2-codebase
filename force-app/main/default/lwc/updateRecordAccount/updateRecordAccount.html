@@ -1,0 +1,57 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-20-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="UpdateRecord - Account" icon-name="standard:account">
+        <div class="slds-var-m-around_medium">
+            <!-- Account Name -->
+            <lightning-input
+                type="text" 
+                label="Account Name"
+                name="Name"
+                value={name}
+                required
+                onblur={changeHandler}>
+            </lightning-input>
+            <!-- Industry -->
+            <lightning-combobox
+                name="Industry"
+                label="Industry"
+                value={industry}
+                placeholder="Select Industry"
+                options={industryOptions}
+                onblur={changeHandler}>
+            </lightning-combobox>
+            <!-- Annual Revenue -->
+            <lightning-input 
+                type="number" 
+                name="AnnualRevenue" 
+                label="Annual Revenue"
+                value={annualRevenue} 
+                formatter="currency"
+                onblur={changeHandler}>
+            </lightning-input>
+            <!-- Website -->
+            <lightning-input 
+                type="url" 
+                label="Website" 
+                name="Website"
+                value={website}
+                placeholder="Enter valid URL here..."
+                onblur={changeHandler}>
+            </lightning-input>
+            <div class="slds-var-m-around_medium slds-align_absolute-center">
+                <!-- Update Button -->
+                <lightning-button 
+                    variant="brand" 
+                    label="Update Account" 
+                    onclick={handleClick}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

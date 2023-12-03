@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-27-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="P2C - Action at Parent - Age">
+        <div class="slds-var-m-around_medium">
+            <p>Use Case: Allow user to enter the age and pass the Age from Parent to Child compoenent immediately. On the child component, display the user entered age along with Age in Months and Age in Days!</p>
+
+            <!-- Input to get Age -->
+            <lightning-input 
+                type="number" 
+                label="Enter your Age"
+                onchange={changeHandler}>
+            </lightning-input>
+
+            <div class="slds-var-m-top_small">
+                <!-- Embed Child component and pass age as the parameter -->
+                <c-p2c-action-at-parent-age-child
+                    age-from-parent={UserEnteredAge}>
+                </c-p2c-action-at-parent-age-child>
+            </div>
+        </div>
+    </lightning-card>
+</template>

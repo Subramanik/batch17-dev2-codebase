@@ -1,0 +1,36 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-03-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Two Way Data Binding">
+        <div class="slds-var-m-around_medium">
+            <div>
+                <lightning-input 
+                    type="text" 
+                    label="Enter your Name:"
+                    value={name}
+                    onchange={nameChangeHandler}>
+                </lightning-input>
+                <lightning-input 
+                    type="number" 
+                    label="Enter your Age:" 
+                    value="18"
+                    onchange={ageChangeHandler}>
+                </lightning-input>
+                <lightning-combobox
+                    label="Select your Role"
+                    options={options}
+                    value={role}
+                    onchange={roleChangeHandler}>
+                </lightning-combobox>
+                <div class="slds-var-m-top_small">
+                    I am {name} and my age is {age} and my role is {role}
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

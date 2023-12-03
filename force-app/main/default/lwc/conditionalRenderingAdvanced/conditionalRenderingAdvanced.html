@@ -1,0 +1,24 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-06-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Conditional Rendering - Advanced">
+        <div class="slds-var-m-around_medium">
+            <lightning-button 
+                variant="brand" 
+                label="Show/Hide Content" 
+                onclick={handleClick}>
+            </lightning-button>
+        </div>
+
+        <template lwc:if={showContent}>
+            <div class="slds-var-m-left_medium slds-text-color_inverse" style="padding:0.5rem;background:#16325c">
+                I am visible because showContentValue is true
+            </div>
+        </template>
+    </lightning-card>
+</template>

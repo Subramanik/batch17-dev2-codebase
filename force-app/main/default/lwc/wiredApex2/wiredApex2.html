@@ -1,0 +1,26 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-21-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Wired Apex - Accounts" icon-name="standard:account">
+        <div class="slds-var-m-around_medium">
+            <!-- Use case: Fetch any 5 accounts and pass the parameter, Industry as Energy and display them on the LWC component in the form of List View, You need to display - Account Name, Type, Industry, Annual Revenue -->
+            <!-- Display the data only when you have data otherwise, display the error message -->
+            <template lwc:if={accounts}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={accounts}
+                    columns={columns}>
+                </lightning-datatable>
+            </template>
+            <template lwc:else>
+                Error: {error}
+            </template>
+        </div>
+    </lightning-card>
+</template>

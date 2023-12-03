@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-06-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Conditional Rendering - Basics">
+        <div class="slds-var-m-around_medium">
+            <template lwc:if={showContent}>
+                Show content is true - {showContent}
+            </template>
+            <template lwc:else>
+                Show content is false - {showContent}
+            </template>
+        </div>
+    </lightning-card>
+</template>

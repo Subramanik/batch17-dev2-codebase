@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-28-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="P2C - Action At Parent Oppty Search" icon-name="standard:no_code_model">
+        <div class="slds-var-m-around_medium">
+            <p>Use case: Allow user to select the opportunity stage, upon selecting the stage on the parent component, display the relevant opportunities matching the selected stage on the child component. Here build the child component as a reusable component for all the objects.</p>
+
+            <lightning-combobox
+                label="Select Opportunity Stage"
+                placeholder="Select Opportunity Stage"
+                options={stageOptions}
+                onchange={changeHandler}>
+            </lightning-combobox>
+
+            <!-- Call child component and pass  the required data -->
+            <c-display-result-in-data-table
+                result={opportunities}
+                columns={columns}
+                error={error}>
+            </c-display-result-in-data-table>
+        </div>
+    </lightning-card>
+</template>

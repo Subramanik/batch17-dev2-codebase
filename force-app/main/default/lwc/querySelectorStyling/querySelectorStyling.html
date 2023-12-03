@@ -1,0 +1,30 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-22-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="QuerySelector - Styling" icon-name="standard:product">
+        <div class="slds-var-m-around_medium">
+            <h1> This is heading 1!!!</h1>
+            <h2> This is heading 2!!!</h2>
+            <p> This is paragraph tag!!!</p>
+            <div class="childDiv"> This is a child div tag</div>
+        
+
+            <template for:each={gotSiblings} for:item="sibling">
+                <div key={sibling} class="sibling"> {sibling}</div>
+            </template>
+
+            <div class="slds-var-m-around_medium">
+                <lightning-button
+                    variant="brand"
+                    label="Apply Styling"
+                    onclick={applyStylingMethod}>
+                </lightning-button>
+            </div> 
+        </div>
+    </lightning-card>
+</template>

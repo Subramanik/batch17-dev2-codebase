@@ -1,0 +1,22 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 12-01-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="C2P - Event With Data" icon-name="standard:no_code_model">
+        <div class="slds-var-m-around_medium">
+            <p> Use Case: Allow user to enter Name and Age at the child component and send the user entered data to the parent component and get this displayed on the Parent Component UI</p>
+            <div class="slds-var-m-top_small slds-text-color_inverse" style="padding:0.5rem;background:#16325c">
+                <b> User Entered Name from Child Component : {nameFromChild}</b> <br/>
+                <b> User Entered Age from Child Component : {ageFromChild}</b>
+            </div>
+        </div>
+        <!-- Child Component -->
+        <c-c2p-event-with-data-child
+            oninputdata={handleInputData}>
+        </c-c2p-event-with-data-child>
+    </lightning-card>
+</template>

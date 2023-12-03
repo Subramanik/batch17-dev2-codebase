@@ -1,0 +1,21 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 12-03-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="C2P - Event Bubbling - Grand Parent Component" icon-name="standard:no_code_model">
+
+        <div onshow={showHandlerNoRelationDiv}>
+
+        </div>
+        <div onshow={showHandlerDiv}>
+            <!-- Add Child Component -->
+            <c-c2p-event-bubbling-parent
+                onshow={showHandlerCmp}>
+            </c-c2p-event-bubbling-parent>
+        </div>
+    </lightning-card>
+</template>

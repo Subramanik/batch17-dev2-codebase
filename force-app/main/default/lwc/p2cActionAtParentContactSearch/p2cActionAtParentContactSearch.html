@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-28-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="P2C - Action at Parent - Contact Search" icon-name="standard:contact">
+        <div class="slds-var-m-around_medium">
+            <p>Use Case: Allow the user to search the contact by contact name and display the result using the resuable datatable component!</p>
+
+            <!-- Create the input component to allow the user to search the contact by contact name -->
+            <lightning-input
+                label="Enter the Contact Name"
+                type="search"
+                onchange={changeHandler}>
+            </lightning-input>
+
+            <!-- Call the child component and pass the required attributes  -->
+            <c-display-result-in-data-table
+                result={contacts}
+                columns={columns}
+                error={error}>
+            </c-display-result-in-data-table>
+        </div>
+    </lightning-card>
+</template>

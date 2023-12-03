@@ -1,0 +1,45 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-22-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Imperative Apex - Leads" icon-name="standard:lead">
+        <div class="slds-var-m-around_medium">
+            <!-- Use Case: Build an UI that should display the 5 recently created leads with details such as Name, Title, Company and Email, each record should be displayed in a separate box when you click on the button. -->
+
+            <lightning-button 
+                variant="brand" 
+                label="Get Recent Leads" 
+                onclick={fetchLeads}>
+            </lightning-button>
+            <div class="slds-var-m-top_x-small">
+                <!-- Display the lead records in a separate box only when you have the result-->
+                <template lwc:if={leads}>
+                    <template for:each={leads} for:item="lead">
+                        <div key={lead.Id} class="slds-box slds-var-m-bottom_x-small">
+                            <lightning-formatted-name
+                                first-name={lead.FirstName}
+                                last-name={lead.LastName}>
+                            </lightning-formatted-name> <br/>
+                            <lightning-formatted-text 
+                                value={lead.Title}>
+                            </lightning-formatted-text> <br/>
+                            <lightning-formatted-text 
+                                value={lead.Company}>
+                            </lightning-formatted-text> <br/>
+                            <lightning-formatted-email 
+                                value={lead.Email}>
+                            </lightning-formatted-email>
+                        </div>
+                    </template>
+                </template>
+                <template lwc:elseif={error}>
+                    Error : {error}
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>

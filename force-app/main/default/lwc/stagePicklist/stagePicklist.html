@@ -1,0 +1,22 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-07-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Opportunity Stages">
+        <div class="slds-var-m-around_medium">
+            <lightning-combobox
+                label="Opportunity Stage"
+                value={selectedValue}
+                options={options}
+                onchange={handleChange}>
+            </lightning-combobox>
+            <div class="slds-var-m-top_medium">
+                <p>Selected Stage is: {selectedValue}</p>
+            </div>
+        </div>
+    </lightning-card>
+</template>

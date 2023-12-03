@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-27-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="P2C - Non-Primitive - Opportunity" icon-name="standard:no_code_model">
+        <div class="slds-var-m-around_medium">
+            <p> Use Case: Pass array of opportunity objects from parent component to the child component and display their details on the child component.</p> <br/>
+
+            <!-- Embed the Child Component and pass array of opportunity object-->
+            <c-p2c-non-primitive-opp-child
+                opportunities={oppty}>
+            </c-p2c-non-primitive-opp-child>
+        </div>
+    </lightning-card>
+</template>

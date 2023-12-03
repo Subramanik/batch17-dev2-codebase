@@ -1,0 +1,35 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-15-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Wire Adapter - getpicklistvaluesByRecordType" icon-name="standard:account_info">
+        <div class="slds-var-m-around_medium">
+            <!--Allow user to select Account Type and Account Industry from dropdown and display the selected option below for both Type & Industry-->
+            <!-- For Account Type selection -->
+            <lightning-combobox
+                name="type"
+                label="Select Account Type"
+                placeholder="Select Account Type"
+                options={typeOptions}
+                onchange={handleChange}>
+            </lightning-combobox>
+            <!-- For Account Industry Selection -->
+            <lightning-combobox
+                name="industry"
+                label="Select Account Industry"
+                placeholder="Select Account Industry"
+                options={industryOptions}
+                onchange={handleChange}>
+            </lightning-combobox>
+             <!-- Display the selected options from the above dropdown -->
+            <div class="slds-var-m-top_medium">
+                <p>Selected Account Type: {selectedType}</p>
+                <p>Selected Account Industry: {selectedIndustry}</p>
+            </div>
+        </div>
+    </lightning-card>
+</template>

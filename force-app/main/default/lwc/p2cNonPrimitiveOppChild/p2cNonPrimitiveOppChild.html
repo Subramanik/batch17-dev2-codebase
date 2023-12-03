@@ -1,0 +1,17 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-27-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <template lwc:if={opportunities}>
+        <template for:each={opportunities} for:item="opportunity">
+            <div key={opportunity.Id}>
+                <strong>{opportunity.Name}</strong> <br/>
+                {opportunity.StageName}, {opportunity.Amount}
+            </div>
+        </template>
+    </template>
+</template>

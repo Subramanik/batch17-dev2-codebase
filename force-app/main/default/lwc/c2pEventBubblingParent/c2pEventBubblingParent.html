@@ -1,0 +1,19 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 12-03-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="Parent Component" icon-name="standard:approval">
+        
+
+        <div onshow={showHandlerDiv}>
+             <!-- Child Component goes here -->
+            <c-c2p-event-bubbling-child
+                onshow={showHandlerCmp}>
+            </c-c2p-event-bubbling-child>
+        </div>
+    </lightning-card>
+</template>

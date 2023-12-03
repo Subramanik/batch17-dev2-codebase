@@ -1,0 +1,52 @@
+<!--
+  @description       : 
+  @author            : Subramani Kumarasamy
+  @group             : 
+  @last modified on  : 11-24-2023
+  @last modified by  : Subramani Kumarasamy
+-->
+<template>
+    <lightning-card title="P2C - Dynamic Data" icon-name="standard:no_code_model">
+        <div class="slds-var-m-around_medium">
+            <p> This is a Parent component and it is going to send the user entered data dynamically into the Child Component and display them</p>
+
+            <!-- Input Components to get input from user -->
+            <lightning-input 
+                type="text"
+                name="actorName" 
+                label="Actor Name"
+                onchange={changeHandler}>
+            </lightning-input>
+            <lightning-input 
+                type="text"
+                name="actorTitle"
+                label="Actor Title"
+                onchange={changeHandler}>
+            </lightning-input>
+            <lightning-input 
+                type="text"
+                name="location"
+                label="Actor Location"
+                onchange={changeHandler}>
+            </lightning-input>
+            <lightning-input 
+                type="number"
+                name="salary"
+                label="Actor Salary"
+                formatter="currency"
+                onchange={changeHandler}>
+            </lightning-input>
+
+            <!-- Dynamic Child Component -->
+            <div class="slds-var-m-top_small">
+                <c-p2c-primitive-dynamic-child
+                    name={name}
+                    title={title}
+                    location={location}
+                    salary={salary}>
+            </c-p2c-primitive-dynamic-child>
+            </div>
+            
+        </div>
+    </lightning-card>
+</template>
